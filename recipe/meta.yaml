@@ -11,21 +11,30 @@ source:
 
 build:
   noarch: python
-  number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 1
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
   host:
-    - python
+    - execnet
     - pip
+    - psutil
+    - python
   run:
+    - execnet
+    - psutil
     - python
 
 test:
   imports:
     - automan
+    - automan.tests
+  requires:
+    - pytest
   source_files:
     - automan/tests/*
+  commands:
+    - pytest --pyargs automan
 
 about:
   home: https://github.com/pypr/automan
