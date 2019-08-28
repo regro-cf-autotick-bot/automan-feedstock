@@ -20,6 +20,7 @@ requirements:
     - pip
     - psutil
     - python
+    - mock
   run:
     - execnet
     - psutil
@@ -31,6 +32,7 @@ test:
     - automan.tests
   requires:
     - pytest
+    - mock
   source_files:
     - automan/tests/*
   commands:
