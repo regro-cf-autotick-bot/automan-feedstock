@@ -1,5 +1,5 @@
 {% set name = "automan" %}
-{% set version = "0.4" %}
+{% set version = "0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2ef29e1f7d6133af9c428ab8e549da2101bccdd0cb6fb9a2caa48c70af8de226
+  sha256: 870df56b071d583e65ea3f37a6e2058d3df1d1abad00a98bb1d49c93657107e9
 
 build:
   noarch: python
-  number: 1
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  number: 0
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   host:
@@ -49,4 +49,4 @@ about:
 extra:
   recipe-maintainers:
     - rishi9699
-    
+
