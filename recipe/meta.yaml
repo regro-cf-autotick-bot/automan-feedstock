@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 2ef29e1f7d6133af9c428ab8e549da2101bccdd0cb6fb9a2caa48c70af8de226
 
 build:
   noarch: python
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
@@ -19,12 +19,12 @@ requirements:
     - execnet
     - pip
     - psutil
-    - python
+    - python {{ python_min }}
     - mock
   run:
     - execnet
     - psutil
-    - python
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -33,6 +33,7 @@ test:
   requires:
     - pytest
     - mock
+    - python {{ python_min }}
   source_files:
     - automan/tests/*
   commands:
